@@ -1,0 +1,9 @@
+# doble tunnel
+$ ssh -p 9006 -L 3000:localhost:5000 vuser@jump_server -t ssh -L 5000:localhost:13000 vuser@local_server
+
+# doble tunnel con socket
+$ ssh -p 9006 -L /tmp/docker.sock:/tmp/docker.sock vuser@jump_server \
+          -t ssh -L /tmp/docker.sock:/var/run/docker.sock vuser@local_server
+          
+# set DOCKER_HOST DOCKER/KUBECTL
+$ export DOCKER_HOST=unix:///tmp/docker.sock
